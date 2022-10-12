@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_edit_perfil.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container rounded bg-white mt-3 mb-5">
+    <button class="btn btn-outline-primary" onclick="history.back()">Voltar</button>
+
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3">
+                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="{{ url_for('edit_register_people', id_people=users.id) }}" style="text-decoration: none;">
+                            <span class="border px-3 p-1 add-experience">
+                            <i class="fas fa-user-edit"></i>
+                            &nbsp;Editar Perfil
+                            </span>
+                        </a>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right display-6">Pagina de Perfil</h4>
+                </div>
+                <div class="row mt-3">
+                    {% if users.name == 'None' %}
+                        
+                    {% else %}
+                        <h5>Nome</h5>    
+                        <p class="text-right">{{ users.name }}</p>
+                        <br>
+                    {% endif %}
+
+                    {% if not users.email %}
+
+                    {% else %}
+                        <h5>E-mail</h5>
+                        <p class="text-right">{{ users.email }}</p>
+                        <br>
+                    {% endif %} 
+
+                    {% if not users.phone_number %}
+
+                    {% else %}
+                        <h5>Telefone</h5>
+                        <p class="text-right">{{ users.phone_number }}</p>
+                        <br>
+                    {% endif %}
+
+                    <h5>Registrado Desde </h5>
+                    <p class="text-right">{{ users.date_registration() }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 bg-light rounded">
+            <div class="p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right display-6">Carros</h4>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{{ url_for('new_car') }}" style="text-decoration: none;">
+                                <span class="border px-3 p-1 add-experience">
+                                <i class="fas fa-plus"></i>
+                                &nbsp;Adicionar Carro
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                        <div class="col-md-12">
+                            <p>Quantidade de carros: <span class="text-muted">{{ users.count_cars() }}</span></p>
+                        </div>
+                        <p>Modelos: 
+                        {% for car in users.name_cars() %}
+                        <div class="col-md-12">
+                            <span class="p"><strong><a href="{{ url_for('car_page', id_car=car.id) }}" style="text-decoration: none;">{{ car }}</a></strong></span>
+                        </div>
+                        {% endfor %}                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_edit_perfil.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container rounded bg-white mt-3 mb-5">
+    <button class="btn btn-outline-primary" onclick="history.back()">Voltar</button>
+
+    <div class="row mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right display-6">Pagina de Perfil</h4>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-9 border-right">
+            <div class="p-3">
+                <div class="row">
+                    <span class="h5"><strong>{{ id_cars.model }}</a></strong></span>
+                    <div class="row">
+                        <div class="col">
+                            <p>Modelo: <span class="text-muted">{{ id_cars.model }}</span>
+                        </div>
+                        <div class="col">
+                            <p>Marca: <span class="text-muted">{{ id_cars.brand }}</span>
+                        </div>
+                        <div class="col">
+                            <p>Tipo de carro: <span class="text-muted">{{ id_cars.car_type }}</span>
+                        </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Cor: <span class="text-muted">{{ id_cars.color_car }}</span>
+                        </div>
+                        <div class="col">
+                            <p>Data de cadastro: <span class="text-muted">{{ id_cars.date_registration() }}</span></p>
+                        </div>
+                        <div class="col">
+                            
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card p-3">
+                        {{ id_cars.description }}
+                    </div>
+                    <br>
+                <hr>        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

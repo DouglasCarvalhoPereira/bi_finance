@@ -1,0 +1,79 @@
+ <nav class="navbar navbar-expand-lg navbar-light bg-light shadow bg-body">
+        <div class="container-fluid">
+          <a class="navbar-brand ms-4" style="font-size: 25px;" href="#">TO DO LIST</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5 blockquote">
+              <li class="nav-item">
+                <a class="nav-link active text-dark" aria-current="page" href="{{ url_for('index') }}">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="#">Contato</a>
+              </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link text-dark" href="{{ url_for('people_feed') }}">Pessoas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" href="{{ url_for('cars_feed') }}">Carros</a>
+                </li>
+                {% endif %}
+            </ul>
+            <!-- Example single danger button -->
+            <div class="d-flex ms-5">
+            {% if current_user.is_authenticated %}
+
+                <!---DESKTOP---->
+                <div class="btn-group d-none d-lg-block d-xl-block d-xxl-none" role="group" aria-label="Basic example">
+                  <a href="{{ url_for('logout') }}" style="text-decoration: none; color: blue;">
+                    <button type="button" class="btn btn-link p-0" style="text-decoration: none; font-size: 15px;">Sair</button>
+                  </a>
+                </div>
+
+                <!---MOBILE---->
+                <div class="btn-group d-lg-none d-xl-none d-xxl-block" role="group" aria-label="Basic example">
+                  <a href="{{ url_for('logout') }}" style="text-decoration: none; color: blue;">
+                    <button type="button" class="btn btn-primary" style="text-decoration: none;">Sair</button>
+                  </a>
+                  <a href="{{ url_for('register_people') }}" class="ms-1" style="text-decoration: none;  color: blue;">
+                    <button type="button" class="btn btn-primary" style="text-decoration: none;">Cadastrar Pessoa</button>
+                  </a>
+                  <a href="{{ url_for('new_car') }}" class="ms-1" style="text-decoration: none;  color: blue;">
+                    <button type="button" class="btn btn-primary" style="text-decoration: none;">Cadastrar Carro</button>
+                  </a>
+                </div>
+
+            {% else %}
+                <!---DESKTOP---->
+                <div class="btn-group d-none d-lg-block d-xl-block d-xxl-none" role="group" aria-label="Basic example">
+                  <a href="{{ url_for('login') }}" style="text-decoration: none; color: blue;">
+                    <button type="button" class="btn btn-link p-0 text-bold" style="text-decoration: none; font-size: 15px;">Entrar</button>
+                  </a>
+                </div>
+
+                <!---MOBILE---->
+                <div class="btn-group d-lg-none d-xl-none d-xxl-block" role="group" aria-label="Basic example">
+                  <a href="{{ url_for('login') }}" style="text-decoration: none; color: blue;">
+                    <button type="button" class="btn btn-primary" style="text-decoration: none;">Entrar</button>
+                  </a>
+                </div>
+            {% endif %}
+            </div>
+            <div class="ms-5 me-5">
+                <a class="d-none d-lg-block d-xl-block d-xxl-none" style="width: 11rem; height: 3em;" href="{{ url_for('register_people') }}">
+                  <button type="button" class="btn btn-sm" style="width: 11rem; height: 3em; background-color: #00adef; color: white;">
+                  Cadastrar Pessoa
+                  </button>
+                </a>
+                <a class="d-none d-lg-block d-xl-block d-xxl-none" style="width: 11rem; height: 3em;" href="{{ url_for('new_car') }}">
+                <button type="button" class="btn btn-sm" style="width: 11rem; height: 3em; background-color: #00adef; color: white;">
+                  Cadastrar Carro
+                </button>
+                </a>
+              </div>
+          </div>
+        </div>
+    </nav>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_edit_perfil.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div class="container rounded bg-white mt-3 mb-5 mt-5">
+    
+    <button class="btn btn-outline-primary" onclick="history.back()">Voltar</button>
+
+    <div class="row mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right display-6">Carros Cadastrados</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 border-right">
+            <div class="p-3">
+            {% for cars in cars %}
+            <div id="myTable" class="mt-3">
+                <div class="row">
+                    <span class="h5"><strong><a href="{{ url_for('car_page', id_car=cars.id) }}">{{ cars.model }}</a></strong></span>
+                    <div class="row">
+                        <div class="col">
+                            <p>Marca: <span class="text-muted">{{ cars.brand }}</span></p>
+                        </div>
+                        <div class="col">
+                            <p>Tipo: <span class="text-muted">{{ cars.car_type }}</span></p>
+                        </div>
+                        <div class="col">
+                            <p>Cor: <span class="text-muted">{{ cars.color_car }}</span></p>
+                        </div>
+                        <div class="col">
+                            <p>Criado: <span class="text-muted">{{ cars.date_registration() }}</span>
+                        </div>
+                    </div>
+                <hr>        
+                </div>
+            </div>
+            {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="card mt-5">
+      <div class="card-body" style="height: 400px;">
+        <div class="text-center mt-1">
+          <h3>Fazer Login</h3>
+        </div>
+      <div class="tab-content" id="pills-tabContent">
+      <div class="container" style="height: 0;">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <form method="POST" action="" class="mt-4">
+            {{ form_login.csrf_token }}
+            <div class="form-floating">
+                {% if form_login.email.errors %}  
+                    {{ form_login.email(class="form-control form-control-lg is-invalid", 
+                    placeholder='Digite seu melhor e-mail') }}
+                <div class="invalid-feedback mb-3">
+                    {% for erro in form_login.email.errors %}
+                        {{ erro }}
+                    {% endfor %}  
+                </div>
+                {% else %}
+                    {{ form_login.email(class="form-control form-control-lg", id="floatingInput", 
+                    placeholder='Digite seu melhor e-mail') }}<br>               
+                {% endif %}
+                 <label for="floatingInput">Seu Melhor E-mail</label>
+            </div>
+            <div class="form-floating">
+                {% if form_login.password.errors %}  
+                    {{ form_login.password(class='form-control form-control-lg is-invalid', 
+                    placeholder='Digite sua senha') }}<br>
+                <div class="invalid-feedback mb-3">
+                    {% for erro in form_login.password.errors %}
+                        {{ erro }}
+                    {% endfor %}  
+                </div>
+                {% else %}
+                      {{ form_login.password(class='form-control form-control-lg', 
+                      placeholder='Digite sua senha') }}<br>
+                {% endif %}
+              <label for="floatingInput">Digite uma Senha (6 e 20)</label>
+            </div>
+          </fieldset>
+            {{ form_login.button_login(class="btn btn-primary", style="width: 100%; padding: 10px; font-size: 1.5em;") }}
+            {{ csrf_token }}
+            <div class="container mt-3">
+                <div class="row font-responsive">
+                    <div class="col col-lg-6">
+                        {{ form_login.remember_user }}
+                        {{ form_login.remember_user.label }}
+                    </div>
+                    <div class="col col-lg-6">
+                        <a class="text-end"><p>Esqueceu sua senha?</p></a>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

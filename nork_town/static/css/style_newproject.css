@@ -1,0 +1,71 @@
+body {
+    font-family: Tahoma, Verdana, Geneva, sans-serif;
+    height: 800px;
+}
+.bg-image{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.459), rgba(255, 255, 255, 0.425)), url("");
+    margin-top: 0;
+    margin-left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+.sectionhome {
+        height: 800px;
+    }
+.centertitle {
+        position: relative;
+        top: 100px;
+        text-align: center;
+        color: white;
+    }
+
+/* MAQUINA DE ESCREVER */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+.container-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-title p {
+  font-size: max(30px, 3.5vw); /*Max pega o maior valor entre os dois*/
+  padding: 0.5rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  overflow: hidden;
+}
+.container-title p span.typed-text {
+  font-weight: normal;
+  color: white;
+  font-size: max(30px, 4vw);
+  font-weight: bold;
+
+}
+.container-title p span.cursor {
+  display: inline-block;
+  background-color: #ccc;
+  margin-left: 0.1rem;
+  width: 3px;
+  animation: blink 1s infinite;
+}
+.container-title p span.cursor.typing {
+  animation: none;
+}
+@keyframes blink {
+  0%  { background-color: #ccc; }
+  49% { background-color: #ccc; }
+  50% { background-color: transparent; }
+  99% { background-color: transparent; }
+  100%  { background-color: #ccc; }
+}
+
+.font-responsive {
+  font-size: max(10px, 1.2vw); /*Max pega o maior valor entre os dois*/
+}
+
+.font-responsive-project {
+  font-size: max(12px, 1.1vw); /*Max pega o maior valor entre os dois*/
+  font-weight: bold;
+}

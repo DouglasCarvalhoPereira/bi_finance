@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_edit_perfil.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div class="container rounded bg-white mt-3 mb-5 mt-5">
+    <button class="btn btn-outline-primary" onclick="history.back()">Voltar</button>
+
+    <div class="row mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right display-6">Pessoas Cadastradas</h4>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-9 border-right">
+            <div class="p-3">
+            {% for user in users %}
+                    <div id="myTable">
+                        <div class="row">
+                            <span class="h5"><strong><a href="{{ url_for('people_page', id_people=user.id) }}" style="text-decoration: none;">{{ user.name }}</a></strong></span>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Quantidade de carros: <span class="text-muted">{{ user.count_cars() }}</span></p>
+                                </div>
+                                <div class="col">
+                                    <p>Cadastro realizado em: <span class="text-muted">{{ user.date_registration() }}</span>
+                                </div>
+                            </div>
+                            <!------PROJETO------>
+                            {% if user.oportunity() %}
+                            <div>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item badge bg-primary">{{ user.oportunity() }}</li>
+                                </ul>
+                            </div>
+                            {% else %}
+
+                            {% endif %}
+                            <br>
+                            <!------PROJETO------>
+                        <hr>        
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

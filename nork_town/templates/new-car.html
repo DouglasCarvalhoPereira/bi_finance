@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_newproject.css') }}">
+{% endblock %}
+
+{% block body %}
+        <div class="container mt-4 p-0" style="height: 65vw;">
+            <button class="btn btn-outline-primary" onclick="history.back()">Voltar</button>
+
+            <form method="POST" action="">
+                {{ form_new_car.csrf_token }}
+                <div class="container mt-5">
+                    <h2>Cadastre um Carro</h2>
+                </div>
+                    <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-7 mt-2">
+                    <div class="container">
+                    <div class="mt-3">
+                        <span class="font-responsive-project">{{ form_new_car.people.label }}</span>
+                        <div class="mt-2">
+                            {% if form_new_car.people.errors %}  
+                                {{ form_new_car.people(class="form-select form-select border border-2 is-invalid", 
+                                placeholder='') }}
+                            <div class="invalid-feedback mb-3">
+                                {% for erro in form_new_car.people.errors %}
+                                    {{ erro }}
+                                {% endfor %}  
+                            </div>
+                            {% else %}
+                                {{ form_new_car.people(class="form-select border border-2", 
+                                placeholder='') }}               
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="font-responsive-project">{{ form_new_car.model.label }}</span>
+                        <div class="mt-2">
+                            {% if form_new_car.model.errors %}  
+                                {{ form_new_car.model(class="form-control border border-2 is-invalid", 
+                                placeholder='') }}
+                            <div class="invalid-feedback mb-3">
+                                {% for erro in form_new_car.model.errors %}
+                                    {{ erro }}
+                                {% endfor %}  
+                            </div>
+                            {% else %}
+                                {{ form_new_car.model(class="form-control border border-2", 
+                                placeholder='') }}               
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="font-responsive-project">{{ form_new_car.brand.label }}</span>
+                        <div class="mt-2">
+                            {% if form_new_car.brand.errors %}  
+                                {{ form_new_car.brand(class="form-select form-select border border-2 is-invalid", 
+                                placeholder='') }}
+                            <div class="invalid-feedback mb-3">
+                                {% for erro in form_new_car.brand.errors %}
+                                    {{ erro }}
+                                {% endfor %}  
+                            </div>
+                            {% else %}
+                                {{ form_new_car.brand(class="form-select border border-2", 
+                                placeholder='') }}               
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="font-responsive-project">{{ form_new_car.car_type.label }}</span>
+                        <div class="mt-2">
+                            {% if form_new_car.car_type.errors %}  
+                                {{ form_new_car.car_type(class="form-select form-select border border-2 is-invalid", 
+                                placeholder='') }}
+                            <div class="invalid-feedback mb-3">
+                                {% for erro in form_new_car.car_type.errors %}
+                                    {{ erro }}
+                                {% endfor %}  
+                            </div>
+                            {% else %}
+                                {{ form_new_car.car_type(class="form-select border border-2", 
+                                placeholder='') }}               
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="font-responsive-project">{{ form_new_car.color_car.label }}</span>
+                        <div class="mt-2">
+                            {% if form_new_car.color_car.errors %}  
+                                {{ form_new_car.color_car(class="form-select border border-2 is-invalid", 
+                                placeholder='') }}
+                            <div class="invalid-feedback mb-3">
+                                {% for erro in form_new_car.color_car.errors %}
+                                    {{ erro }}
+                                {% endfor %}  
+                            </div>
+                            {% else %}
+                                {{ form_new_car.color_car(class="form-select", placeholder='Digite sua senha') }}             
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="font-responsive-project">{{ form_new_car.description.label }}                                    
+                        {% if form_new_car.description.errors %}  
+                            {{ form_new_car.description(style="height:250px", class="form-control border border-2 is-invalid", 
+                            placeholder='Quanto melhor descrito melhores serão os orçamentos recebidos.') }}
+
+                        <div class="invalid-feedback mb-3">
+                            {% for erro in form_new_car.description.errors %}
+                                {{ erro }}
+                            {% endfor %}  
+                        </div>
+                        {% else %}
+                            {{ form_new_car.description(style="height:250px", class="form-control border border-2", 
+                            placeholder='Quanto melhor descrito melhores serão os orçamentos recebidos.') }}              
+                        {% endif %}
+                    <div class="mt-5">  
+                        
+                            {{ form_new_car.button_new_project(class="btn btn-primary", 
+                            style="width: 100%; padding: 10px; font-size: 1.5em;") }}
+                            {{ csrf_token }}
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+            </form>
+        </div>
+  
+{% endblock %}
