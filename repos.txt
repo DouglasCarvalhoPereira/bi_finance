@@ -1,0 +1,9 @@
+https://github.com/hongtaocai/googlefinance
+https://github.com/dpguthrie/yahooquery
+https://github.com/gustavomoers/FinanceDash
+https://github.com/ramonpaolo/api-b3
+https://github.com/gustavomoers/BrazilianMarketDataAPI
+
+Inserir Dashboard Powr BI no site
+
+https://learn.microsoft.com/pt-br/power-bi/collaborate-share/service-embed-secure
