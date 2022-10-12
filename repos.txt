@@ -13,3 +13,8 @@ https://learn.microsoft.com/pt-br/power-bi/collaborate-share/service-embed-secur
 Subir app
 
 https://help.pythonanywhere.com/pages/Flask/
+
+Dashboard python
+
+https://github.com/plotly/dash-sample-apps/tree/main/apps/dash-web-trader
+https://plotly.com/
